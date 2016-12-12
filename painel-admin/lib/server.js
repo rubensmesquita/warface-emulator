@@ -34,6 +34,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false })); // Para obter informações POST e / ou parâmetros de URL
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+
 //app.use(morgan('dev')); // Logs de requisição no console node.	
 
 exports.run = function(config, ready) {
@@ -100,7 +101,7 @@ exports.run = function(config, ready) {
 		api_router.post('/shop/remove/item', function (req, res) {
 			Shop.remove({ _id: req.body.id }, function(err) {
 				if(err) res.json({type: 'error', msn: err});
-					res.json({type: 'success', msn: 'ok item deleted!'});
+					res.json({type: 'success', msn: 'Item deletado!'});
 			});
 		})
 
