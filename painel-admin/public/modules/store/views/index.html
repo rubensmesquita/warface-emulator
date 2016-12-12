@@ -1,0 +1,182 @@
+<div class="page-head">
+  <h2 class="page-head-title">Loja do jogo</h2>
+  <ol class="breadcrumb page-head-nav">
+    <li><a href="#/">Dashboard</a></li>
+    <li class="active">Loja</li>
+  </ol>
+</div>
+
+<div class="main-content container-fluid">
+  <div class="row">
+
+            <div class="col-sm-12">
+              <p><button data-toggle="modal" data-target="#mod-primary" class="btn btn-space btn-primary">Adicionar novo item</button></p>
+            </div>     
+
+            <div class="col-sm-12">
+              <div class="panel panel-default panel-table">
+                <div class="panel-heading">Itens da loja
+                  <div class="tools"><span class="icon mdi mdi-download"></span><span class="icon mdi mdi-more-vert"></span></div>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th style="width:5%;">
+                          <div class="be-checkbox be-checkbox-sm">
+                            <input id="check1" type="checkbox">
+                            <label for="check1"></label>
+                          </div>
+                        </th>
+                        <th style="width:20%;">Nome</th>
+                        <th style="width:17%;">Tipo de oferta</th>
+                        <th style="width:10%;">GP</th>
+                        <th style="width:10%;">CASH</th>
+                        <th style="width:10%;">CROWN</th>
+                        <th style="width:10%;">Tipo de item</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="obj in shopItems">
+                        <td>
+                          <div class="be-checkbox be-checkbox-sm">
+                            <input id="check2" type="checkbox">
+                            <label for="check2"></label>
+                          </div>
+                        </td>
+                        
+                        <td class="cell-detail"><span>{{obj.item.name}}</span><span class="cell-detail-description">Permanente</span></td>
+
+                        <td class="cell-detail"> <span>Normal</span><span class="cell-detail-description">Oferta sem descontos</span></td>
+
+                        <td class="cell-detail"><span>{{obj.item.game_price}}</span><span class="cell-detail-description">
+                        {{obj.item.game_price_origin}}</span></td>
+
+                        <td class="cell-detail"><span>{{obj.item.cry_price}}</span><span class="cell-detail-description">{{obj.item.cry_price_origin}}</span></td>
+
+                        <td class="cell-detail"><span>{{obj.item.crown_price}}</span><span class="cell-detail-description">{{obj.item.crown_price_origin}}</span></td>
+
+                        <td class="text-right">
+                          <div class="btn-group btn-hspace">
+                            <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Editar <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
+                            <ul role="menu" class="dropdown-menu pull-right">
+                              <li><a ng-click="removeItem(obj._id, $index)">Deletar</a></li>
+                              <li><a ng-click="editItem(obj._id)">Editar</a></li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+
+
+<!--Modal Alerts-->
+    <div id="mod-primary" tabindex="-1" role="dialog" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close"></span></button>
+            <h3 class="modal-title">Novo item</h3>
+          </div>
+
+          <form name="shop" ng-submit="savedata()">
+
+          <div class="modal-body">
+            
+            <div class="form-group col-xs-6">
+              <label>Nome</label>
+              <input type="text" placeholder="Nome do item ex*(pt07_shop)" ng-model="form.name" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-6">
+              <label>Data de validade</label>
+              <input type="text" placeholder="ex*(7 day)" ng-model="form.expirationTime" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-4">
+              <label>Pontos de durabilidade</label>
+              <input type="text" placeholder="ex*(36000)" ng-model="form.durabilityPoints" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-4">
+              <label>Custo de reparação</label>
+              <input type="text" placeholder="ex*(2621)" ng-model="form.repair_cost" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-4">
+              <label>Quantidade (M, G)</label>
+              <input type="text" placeholder="ex*(0)" ng-model="form.quantity" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-6">
+              <label>Categoria</label>
+              <input type="text" placeholder="Obs: campo sempre em branco" ng-model="form.item_category_override" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Tipo de oferta</label>
+              <input type="text" placeholder="ex*(normal)" ng-model="form.offer_status" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>ID de fornecedor</label>
+              <input type="text" placeholder="ex*(1)" ng-model="form.supplier_id" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Desconto</label>
+              <input type="text" placeholder="ex*(0)" ng-model="form.discount" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Rank</label>
+              <input type="text" placeholder="ex*(1)" ng-model="form.rank" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Preço em GP</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.game_price" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Preço GP(ORIG)</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.game_price_origin" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Preço em CROWN</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.crown_price" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Pr CROWN (ORIG)</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.crown_price_origin" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Preço em CASH</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.cry_price" class="form-control" required>
+            </div>
+
+            <div class="form-group col-xs-3">
+              <label>Pr CASH (ORIG)</label>
+              <input type="text" placeholder="ex*(100)" ng-model="form.cry_price_origin" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default md-close">Cancelar</button>
+            <button type="submit" class="btn btn-primary md-close" ng-disabled="shop.$invalid">Salva</button>
+          </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
