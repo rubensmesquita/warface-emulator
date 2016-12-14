@@ -2,6 +2,19 @@
  <p>1° Instale o mongodb</p>
  <p>2° Instale o nodejs</p>
 
+# Oque esta funcionando?
+
+ <ul>
+  <li>login <b>ok</b></li>
+  <li>Loja <b>ok</b></li>
+  <li>lobby <b>ok</b></li>
+  <li>salas <b>ok</b></li>
+  <li>profile <b>ok</b></li>
+  <li>lista de amigos <b>ok</b></li>
+  <li>inventário <b>ok</b></li>
+ </ul>
+ 
+
 # Como usar
 
 <p>1°, execute o <b>npm install</b> dentro da pasta do emulator</p>
