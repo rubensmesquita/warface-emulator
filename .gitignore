@@ -3,5 +3,6 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
+/api-ga/node_modules/
 /dist/
 /sftp-config.json

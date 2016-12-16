@@ -30,10 +30,11 @@ initializeDb( db => {
 
     client.on("authenticate", function(opts, cb) {
     	Account.auth.findOne({username: opts.jid.local}, function(err, user) {
-        if (user.username && opts.password)
-          cb(null, opts);
-        else
-          cb(new Error("Authentication failure"));
+        if(err) console.log(err);
+          if (user.username && opts.password)
+            cb(null, opts);
+          else
+            cb(new Error("Authentication failure"));
       });
     });
 

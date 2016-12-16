@@ -13,6 +13,9 @@ const Friends     = require('./app/models/friends');
 const Missions    = require('./app/models/missions');
 const GameRoom    = require('./app/models/gameroom');
 
+// Fix mongodb connect.
+mongoose.Promise = global.Promise;
+mongoose.connect(config.database); 
 
 // MongoDB save data routes
 
@@ -27,9 +30,9 @@ let newUserGamer = new User({
     lang: 'pt-br'
 });
   
-// newUserGamer.save(function(err) {
-//    console.log('User added.');
-// });
+newUserGamer.save(function(err) {
+   console.log('User added.');
+});
 
 
 let newMissionGame =  new Missions({

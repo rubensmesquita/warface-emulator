@@ -150,10 +150,10 @@ export default (server, config) => {
                             client.send(stz)
                             break;
                         default:
-                            //let from = stz.attrs.from
-                            //stz.attrs.from = stz.attrs.to
-                            //stz.attrs.to = from
-                            //client.send(stz)
+                            let from = stz.attrs.from
+                            stz.attrs.from = stz.attrs.to
+                            stz.attrs.to = from
+                            client.send(stz)
                             //console.log('Query não configurada ------------------ ');
                             //console.log(stz.toString(), '\n');
                             break;
