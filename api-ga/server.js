@@ -34,6 +34,42 @@ let newUserGamer = new User({
 //    console.log('User added.');
 // });
 
+let profileadd = new Profile({
+  profileid: '608714', // profileid user
+  username: 'set',
+  nickname: '-setTimeout-',
+  gender: 'male',
+  height: '1',
+  head: 'default_head_4',
+  current_class: '0',
+  experience: '17364000',
+  pvp_rating_points: '0',
+  banner_badge: '4294967295',
+  banner_mark: '4294967295',
+  banner_stripe: '4294967295',
+  game_money: '8500000',
+  cry_money: '2500000',
+  crown_money: '800000',
+  items: [{
+    id: '1', 
+    name: 'mk01', 
+    attached_to: '0',
+    config: 'dm=0;material=default;pocket_index=32768', 
+    slot: '1', 
+    equipped: '8', 
+    default: '1', 
+    permanent: '0', 
+    expired_confirmed: '0', 
+    buy_time_utc: '0', 
+    expiration_time_utc: '0', 
+    seconds_left: '0'
+  }]
+});
+
+// profileadd.save(function(err) {
+//   console.log(profileadd);
+// });
+
 
 let newMissionGame =  new Missions({
   
