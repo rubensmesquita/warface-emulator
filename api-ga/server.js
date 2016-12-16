@@ -30,9 +30,9 @@ let newUserGamer = new User({
     lang: 'pt-br'
 });
   
-newUserGamer.save(function(err) {
-   console.log('User added.');
-});
+// newUserGamer.save(function(err) {
+//    console.log('User added.');
+// });
 
 
 let newMissionGame =  new Missions({
