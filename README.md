@@ -144,7 +144,13 @@ let newMissionGame =  new Missions({
 });
 
 newMissionGame.save(function(err) {
-  console.log('Added new mission.');
+
+  if(!err){
+    console.log('Added new mission.');
+  }else{
+    console.log(err.errors.mission_key.message);
+  }
+
 });
 
 ```
