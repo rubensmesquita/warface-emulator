@@ -29,6 +29,7 @@
 ##### Para adicionar um novo usuário (in file server.js)
 
 ```js
+
 let newUserGamer = new User({
     userid: randomid(5),
     profileid: randomid(6),
@@ -41,7 +42,50 @@ let newUserGamer = new User({
 });
   
 newUserGamer.save(function(err) {
-   console.log('User added.');
+  
+  if(!err){
+
+    // Create new profile.
+    let profileadd = new Profile({
+      profileid: newUserGamer.profileid, // profileid user
+      username: newUserGamer.username,
+      nickname: newUserGamer.nickname,
+      gender: 'male',
+      height: '1',
+      head: 'default_head_4',
+      current_class: '0',
+      experience: '17364000',
+      pvp_rating_points: '0',
+      banner_badge: '4294967295',
+      banner_mark: '4294967295',
+      banner_stripe: '4294967295',
+      game_money: '8500000',
+      cry_money: '2500000',
+      crown_money: '800000',
+      items: [{
+        id: '1', 
+        name: 'mk01', 
+        attached_to: '0',
+        config: 'dm=0;material=default;pocket_index=32768', 
+        slot: '1', 
+        equipped: '8', 
+        default: '1', 
+        permanent: '0', 
+        expired_confirmed: '0', 
+        buy_time_utc: '0', 
+        expiration_time_utc: '0', 
+        seconds_left: '0'
+      }]
+    });
+
+    profileadd.save(function(err) {
+      console.log(newUserGamer, profileadd, 'Successfully created user and profile.');
+    });
+
+  }else{
+    console.log(err.errors.username.message);
+  }
+
 });
 
 ```
