@@ -1,3 +1,7 @@
+# forum para perguntas
+
+http://game-amazing.ga/
+
 # Observações e requisitos
  <p>1° Instale o mongodb <a href="https://www.mongodb.com/download-center">Link para donwload</a></p>
  <p>2° Instale o nodejs <a href="https://nodejs.org/en/download/">Link para donwload</a></p>
