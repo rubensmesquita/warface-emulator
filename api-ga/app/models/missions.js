@@ -3,9 +3,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
-module.exports = mongoose.model('Missions', new Schema({ 
+var Missions = mongoose.model('Missions', new Schema({ 
     
-    mission_key: String,
+    mission_key: {
+        type: String,
+        required: true,
+        validate: [
+            { validator: missionVrExist, msg: 'Missão já existe.'}
+        ]
+    },
     no_teams: String,
     name: String,
     setting: String,
@@ -43,3 +49,16 @@ module.exports = mongoose.model('Missions', new Schema({
     }
 
 }));
+
+function missionVrExist(value, done) {
+  if (value) {
+    Missions.findOne({ mission_key: value }, (err, count) => {
+      if (err) {
+        return done(err);
+      }
+      done(!count);
+    });
+  }
+}
+
+module.exports = Missions;
